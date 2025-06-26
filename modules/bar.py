@@ -169,7 +169,7 @@ class Bar(Window):
             time_format_horizontal = "%I:%M %p"
             time_format_vertical = "%I\n%M\n%p"
         else:
-            time_format_horizontal = "%H:%M"
+            time_format_horizontal = "%H:%M %d-%m"
             time_format_vertical = "%H\n%M"
 
         self.date_time = DateTime(
@@ -282,10 +282,10 @@ class Bar(Window):
         self.h_end_children = [
             self.boxed_revealer_right,
             self.battery,
-            self.systray,
             self.button_tools,
             self.language,
             self.date_time,
+            self.systray,
             self.button_power,
         ]
         

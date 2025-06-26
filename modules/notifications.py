@@ -208,9 +208,10 @@ class NotificationBox(Box):
             end_children=[self.header_close_button]
         )
 
+
     def create_content(self):
         notification = self.notification
-        pixbuf = load_scaled_pixbuf(self, 48, 48)
+        pixbuf = load_scaled_pixbuf(self, 160, 160)
         self.notification_image_box = Box(
             name="notification-image",
             orientation="v",
@@ -220,23 +221,14 @@ class NotificationBox(Box):
             name="notification-summary",
             markup=notification.summary,
             h_align="start",
-            max_chars_width=16,
-            ellipsization="end",
-        )
-        self.notification_app_name_label_content = Label(
-            name="notification-app-name",
-            markup=notification.app_name,
-            h_align="start",
-            max_chars_width=16,
-            ellipsization="end",
+            max_chars_width=30,
+            h_expand=True,
         )
         self.notification_body_label = Label(
             markup=notification.body,
+            max_chars_width=30,
             h_align="start",
-            max_chars_width=34,
-            ellipsization="end",
         ) if notification.body else Box()
-        self.notification_body_label.set_single_line_mode(True) if notification.body else None
         self.notification_text_box = Box(
             name="notification-text",
             orientation="v",
@@ -244,15 +236,7 @@ class NotificationBox(Box):
             h_expand=True,
             h_align="start",
             children=[
-                Box(
-                    name="notification-summary-box",
-                    orientation="h",
-                    children=[
-                        self.notification_summary_label,
-                        Box(name="notif-sep", h_expand=False, v_expand=False, h_align="center", v_align="center"),
-                        self.notification_app_name_label_content,
-                    ],
-                ),
+                self.notification_summary_label,
                 self.notification_body_label,
             ],
         )
@@ -263,7 +247,6 @@ class NotificationBox(Box):
                 self.content_close_button,
             ],
         )
-
         return Box(
             name="notification-content",
             spacing=8,
