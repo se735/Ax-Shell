@@ -26,7 +26,7 @@
   all: unset;
   color: var(--foreground);
   font-size: unset;
-  font-family: unset;
+  font-family: Fira Code;
   border-radius: 16px;
 }
 
