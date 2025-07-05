@@ -169,7 +169,7 @@ class Bar(Window):
             time_format_horizontal = "%I:%M %p"
             time_format_vertical = "%I\n%M\n%p"
         else:
-            time_format_horizontal = "%H:%M %d-%m"
+            time_format_horizontal = "%H:%M %a %d-%m"
             time_format_vertical = "%H\n%M"
 
         self.date_time = DateTime(
